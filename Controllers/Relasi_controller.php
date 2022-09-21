@@ -11,11 +11,6 @@ if(!isset($_SESSION['listRelasi'])) {
 function insertRelasi() {
     $uidKaryawan = $_POST['uidKaryawan'];
     $uidKantor = $_POST['uidKantor'];
-    foreach(indexRelasi() as $index=>$relasi) {
-        if(!strcmp($relasi->getUidKantor(), $uidKantor) || !strcmp($relasi->getUidKaryawan(), $uidKaryawan)) {
-            return false;
-        }
-    }
     $relasi = new Relasi_model($_POST['uidKaryawan'], $_POST['uidKantor']);
     array_push($_SESSION['listRelasi'], $relasi);
 }
