@@ -25,6 +25,28 @@ if(isset($_GET['delete'])) {
     <title>Kantor</title>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="relasi.php">WebDev</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="karyawan.php">Karyawan </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="kantor.php">Kantor</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="relasi.php">Relasi <span class="sr-only">(current)</span></a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+
     <h1 class="text-center">List Kantor</h1>
     <table class="table table-dark mt-2 w-50 mx-auto">
     <thead>
@@ -57,7 +79,7 @@ if(isset($_GET['delete'])) {
                 <td><?=$kantor->getAlamat()?></td>
                 <td><?=$kantor->getKota()?></td>
                 <td><?=$kantor->getHp()?></td>
-                <td><a href="kantor.php?delete=<?=$index?>"><button class="btn btn-primary">Delete</button></a></td>
+                <td><a href="relasi.php?delete=<?=$index?>"><button class="btn btn-primary">Delete</button></a></td>
             </tr>
 
             <?php
@@ -67,11 +89,11 @@ if(isset($_GET['delete'])) {
     </tbody>
     </table>
     <h1 class="text-center mt-2">Tambah Relasi</h1>
-    <form method="POST" action="kantor.php">
+    <form method="POST" action="relasi.php">
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
             <label for="inputkar">Karyawan</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="uidKaryawan">
                 <option selected>Open this select menu</option>
 
                 <?php
@@ -79,7 +101,7 @@ if(isset($_GET['delete'])) {
                 foreach(indexKaryawan() as $index=>$karyawan) {
                     ?>
                         
-                        <option value="<?= $karyawan->getUid() ?>"><?=$karyawan->getName()?></option>
+                        <option value="<?= $karyawan->getUid() ?>"><?=$karyawan->getNama()?></option>
 
                     <?php
                 }
@@ -90,7 +112,7 @@ if(isset($_GET['delete'])) {
             </div>
             <div class="form-group text-start w-50 d-inline-block">
             <label for="inputkan">Kantor</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="uidKantor">
                 <option selected>Open this select menu</option>
 
                 <?php
@@ -98,7 +120,7 @@ if(isset($_GET['delete'])) {
                 foreach(indexKantor() as $index=>$kantor) {
                     ?>
                         
-                        <option value="<?= $kantor->getUid() ?>"><?=$karyawan->getKantor()?></option>
+                        <option value="<?= $kantor->getUid() ?>"><?=$kantor->getNama()?></option>
 
                     <?php
                 }
