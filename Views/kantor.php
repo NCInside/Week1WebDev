@@ -46,7 +46,7 @@ if(isset($_GET['delete'])) {
             </div>
     </nav>
 
-
+    <div class="text-center">
     <h1 class="text-center">List Kantor</h1>
     <table class="table table-dark mt-2 w-50 mx-auto">
     <thead>
@@ -85,23 +85,27 @@ if(isset($_GET['delete'])) {
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
                 <label for="inputNama">Nama</label>
-                <input name="nama" type="text" class="form-control" id="inputNama" placeholder="Enter nama">
+                <input name="nama" type="text" class="form-control" id="inputNama" placeholder="Enter nama" required>
             </div>
             <div class="form-group text-start w-50 d-inline-block">
                 <label for="inputAlamat">Alamat</label>
-                <input name="alamat" type="text" class="form-control" id="inputAlamat" placeholder="Enter alamat">
+                <input name="alamat" type="text" class="form-control" id="inputAlamat" placeholder="Enter alamat" required>
             </div>
             <div class="form-group text-start w-50 d-inline-block">
                 <label for="inputKota">Kota</label>
-                <input name="kota" type="text" class="form-control" id="inputKota" placeholder="Enter kota">
+                <input name="kota" type="text" class="form-control" id="inputKota" placeholder="Enter kota" required>
             </div>
             <div class="form-group text-start w-50 d-inline-block">
                 <label for="inputHp">Hp</label>
-                <input name="hp" type="number" class="form-control" id="inputHp" placeholder="Enter nomor hp">
+                <input name="hp" type="number" class="form-control" id="inputHp" placeholder="Enter nomor hp" required>
             </div>
         </div>
-        <button name="submit" type="submit" class="btn d-block mx-auto mt-3 btn-primary" value="insert">Insert</button>
-        <button name="submit" type="submit" class="btn d-block mx-auto mt-2 btn-primary" value="update">Update</button>
+        <div class="btn-group mt-2" role="group" aria-label="Basic example">
+            <button name="submit" type="submit" class="btn d-block mx-auto btn-primary" value="insert">Insert</button>
+            <button name="submit" type="submit" class="btn d-block mx-auto btn-primary" value="update">Update</button>
+        </div>
     </form>
+    </div>
+
 </body>
 </html>
