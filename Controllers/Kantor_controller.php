@@ -16,17 +16,19 @@ function insertKantor() {
     }
 }
 
-function updateKantor() {
+function updateKantor($uid) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $kota = $_POST['kota'];
     $hp = $_POST['hp'];
     if (validateKantor($nama, $alamat, $kota, $hp)) {
         foreach(indexKantor() as $index=>$kantor) {
-            if(!strcmp($kantor->getNama(), $_POST['nama'])) {
-                $kantor->setAlamat($_POST['alamat']);
-                $kantor->setKota($_POST['kota']);
-                $kantor->setHp($_POST['hp']);
+            echo '<h1>' . $uid . '</h1>';
+            if(!strcmp($kantor->getUid(), $uid)) {
+                $kantor->setNama($nama);
+                $kantor->setAlamat($alamat);
+                $kantor->setKota($kota);
+                $kantor->setHp($hp);
                 return true;
             }
         }

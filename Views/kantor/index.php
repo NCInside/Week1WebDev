@@ -1,11 +1,8 @@
 <?php
 
-require('../controllers/Kantor_controller.php');
+require('../../controllers/Kantor_controller.php');
 if(isset($_POST['submit'])) {
-    if ($_POST['submit'] == "insert") {
-        insertKantor();
-    }
-    else updateKantor();
+    insertKantor();
 }
 
 if(isset($_GET['delete'])) {
@@ -26,7 +23,7 @@ if(isset($_GET['delete'])) {
 <body>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="karyawan.php">WebDev</a>
+            <a class="navbar-brand" href="../karyawan/">WebDev</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,13 +31,13 @@ if(isset($_GET['delete'])) {
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="karyawan.php">Karyawan </a>
+                    <a class="nav-link" href="../karyawan/">Karyawan </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="kantor.php">Kantor <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Kantor <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="relasi.php">Relasi </a>
+                    <a class="nav-link" href="../relasi/">Relasi </a>
                 </li>
                 </ul>
             </div>
@@ -57,6 +54,7 @@ if(isset($_GET['delete'])) {
         <th scope="col">Kota</th>
         <th scope="col">Hp</th>
         <th scope="col">Delete</th>
+        <th scope="col">Update</th>
         </tr>
     </thead>
     <tbody>
@@ -71,7 +69,8 @@ if(isset($_GET['delete'])) {
                 <td><?=$kantor->getAlamat()?></td>
                 <td><?=$kantor->getKota()?></td>
                 <td><?=$kantor->getHp()?></td>
-                <td><a href="kantor.php?delete=<?=$index?>"><button class="btn btn-primary">Delete</button></a></td>
+                <td><a href="index.php?delete=<?=$index?>"><button class="btn btn-primary">Delete</button></a></td>
+                <td><a href="update.php?uid=<?=$kantor->getUid()?>"><button class="btn btn-primary">Update</button></a></td>
             </tr>
 
             <?php
@@ -81,7 +80,7 @@ if(isset($_GET['delete'])) {
     </tbody>
     </table>
     <h1 class="text-center mt-2">Tambah Kantor</h1>
-    <form method="POST" action="kantor.php">
+    <form method="POST" action="index.php">
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
                 <label for="inputNama">Nama</label>
@@ -102,7 +101,6 @@ if(isset($_GET['delete'])) {
         </div>
         <div class="btn-group mt-2" role="group" aria-label="Basic example">
             <button name="submit" type="submit" class="btn d-block mx-auto btn-primary" value="insert">Insert</button>
-            <button name="submit" type="submit" class="btn d-block mx-auto btn-primary" value="update">Update</button>
         </div>
     </form>
     </div>

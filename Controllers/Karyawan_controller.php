@@ -15,15 +15,16 @@ function insertKaryawan() {
     }
 }
 
-function updateKaryawan() {
+function updateKaryawan($uid) {
     $nama = $_POST['nama'];
     $jabatan = $_POST['jabatan'];
     $usia = $_POST['usia'];
     if (validateKaryawan($nama, $jabatan, $usia)) {
         foreach(indexKaryawan() as $index=>$karyawan) {
-            if(!strcmp($karyawan->getNama(), $_POST['nama'])) {
-                $karyawan->setJabatan($_POST['jabatan']);
-                $karyawan->setUsia($_POST['usia']);
+            if(!strcmp($karyawan->getUid(), $uid)) {
+                $karyawan->setNama($nama);
+                $karyawan->setJabatan($jabatan);
+                $karyawan->setUsia($usia);
                 return true;
             }
         }

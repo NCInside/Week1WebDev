@@ -1,8 +1,8 @@
 <?php
 
-include('../models/Relasi_model.php');
-include('../models/Karyawan_model.php');
-include('../models/Kantor_model.php');
+include('../../models/Relasi_model.php');
+include('../../models/Karyawan_model.php');
+include('../../models/Kantor_model.php');
 session_start();
 if(!isset($_SESSION['listRelasi'])) {
     $_SESSION['listRelasi'] = array();
@@ -11,15 +11,16 @@ if(!isset($_SESSION['listRelasi'])) {
 function insertRelasi() {
     $uidKaryawan = $_POST['uidKaryawan'];
     $uidKantor = $_POST['uidKantor'];
-    $relasi = new Relasi_model($_POST['uidKaryawan'], $_POST['uidKantor']);
+    $relasi = new Relasi_model($uidKaryawan, $uidKantor);
     array_push($_SESSION['listRelasi'], $relasi);
 }
 
-function updateRelasi() {
+function updateRelasi($uid) {
     $uidKaryawan = $_POST['uidKaryawan'];
     $uidKantor = $_POST['uidKantor'];
     foreach(indexRelasi() as $index=>$relasi) {
-        if(!strcmp($relasi->getUidKaryawan(), $uidKaryawan)) {
+        if(!strcmp($relasi->getUid(), $uid)) {
+            $relasi->setUidKaryawan($uidKaryawan);
             $relasi->setUidKantor($uidKantor);
             return true;
         }
@@ -33,4 +34,10 @@ function indexRelasi() {
 
 function deleteRelasi($id) {
     unset($_SESSION['listRelasi'][$id]);
+}
+
+function findRelasi($uid) {
+    foreach($_SESSION['listRelasi'] as $index=>$relasi) {
+        if ($relasi->getUid() == $uid) return $relasi;
+    }
 }
