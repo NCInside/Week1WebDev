@@ -23,7 +23,6 @@ function updateKantor($uid) {
     $hp = $_POST['hp'];
     if (validateKantor($nama, $alamat, $kota, $hp)) {
         foreach(indexKantor() as $index=>$kantor) {
-            echo '<h1>' . $uid . '</h1>';
             if(!strcmp($kantor->getUid(), $uid)) {
                 $kantor->setNama($nama);
                 $kantor->setAlamat($alamat);
