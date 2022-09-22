@@ -48,7 +48,7 @@ if(isset($_GET['delete'])) {
     </nav>
 
     <div class="text-center">
-    <h1 class="text-center">List Kantor</h1>
+    <h1 class="text-center">List Relasi</h1>
     <table class="table table-dark mt-2 w-50 mx-auto">
     <thead>
         <tr>

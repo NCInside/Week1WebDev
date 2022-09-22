@@ -80,7 +80,7 @@ if(isset($_GET['delete'])) {
         ?>
     </tbody>
     </table>
-    <h1 class="text-center mt-2">Tambah Karyawan</h1>
+    <h1 class="text-center mt-2">Tambah Kantor</h1>
     <form method="POST" action="kantor.php">
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
